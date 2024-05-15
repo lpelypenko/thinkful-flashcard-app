@@ -8,10 +8,6 @@ function Card({ card, handleDelete }) {
     <div className="border border-dark my-4 mx-5 rounded p-4 bg-light">
       <table>
         <tbody>
-          <tr className="text-center">
-            <th className="col-md-4">Front</th>
-            <th className="col-md-4">Back</th>
-          </tr>
           <tr className="m-2 text-center">
             <td className="col-md-4 m-2">{card.front}</td>
             <td className="col-md-4 m-2">{card.back}</td>
@@ -27,7 +23,10 @@ function Card({ card, handleDelete }) {
         <button
           type="button"
           className="ml-3 p-2 bd-highlight btn btn-outline-danger mt-4"
-          onClick={handleDelete}
+          onClick={() => {
+            console.log("handleDelete", handleDelete);
+            handleDelete();
+          }}
         >
           Delete
         </button>

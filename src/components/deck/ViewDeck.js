@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useParams, useLocation, useNavigate } from "react-router-dom";
-import { readDeck, deleteDeck, deleteCard } from "../../utils/api";
+import { NavLink, useParams, useLocation } from "react-router-dom";
+import { readDeck, deleteCard } from "../../utils/api";
 import CardList from "../card/CardList";
 import DeleteDeckButton from "./DeleteDeckButton";
 
@@ -21,7 +21,7 @@ function ViewDeck() {
     return () => abortController.abort();
   }, [deckId]);
 
-  const handleCardDelete = (cardId) => () => {
+  const handleCardDelete = (cardId) => {
     const result = window.confirm(
       `Delete this card? \n \n You will not be able to recover it.`
     );
