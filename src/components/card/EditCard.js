@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { readDeck, updateCard, readCard } from "../../utils/api";
-import { useState } from "react";
 import { NavLink, useParams, useNavigate } from "react-router-dom";
 import CardForm from "./CardForm";
 
-export default function AddCard() {
+function EditCard() {
   const navigate = useNavigate();
   const { deckId, cardId } = useParams();
   const [deck, setDeck] = useState({});
@@ -39,7 +38,7 @@ export default function AddCard() {
   };
 
   return (
-    <>
+    <div>
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -68,6 +67,7 @@ export default function AddCard() {
         deckId={deckId}
         isAdd={false}
       />
-    </>
+    </div>
   );
 }
+export default EditCard;

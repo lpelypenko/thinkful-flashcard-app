@@ -19,7 +19,7 @@ function RootRoutes() {
       {/* <Route path="/decks/:deckId/study" element={<Study />} /> */}
       <Route path="/decks/:deckId/cards/new" element={<CreateNewCard />} />
       <Route path="/decks/:deckId/cards/:cardId/edit" element={<EditCard />} />
-      {/* <Route path="/decks/:deckId/edit" element={<EditDeck />} /> */}
+      <Route path="/decks/:deckId/edit" element={<EditDeck />} />
       <Route path="*" exact={true} element={<NotFound />} />
     </Routes>
   );
