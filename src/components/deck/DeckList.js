@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import DeckListItem from "./DeckListItem";
 import { listDecks } from "../../utils/api";
 import ErrorMessage from "../common/ErrorMessage";
+import Icon from "../common/Icon";
 
 function DeckList() {
   const [decks, setDecks] = useState([]);
@@ -19,18 +20,25 @@ function DeckList() {
   }
 
   const deckList = decks.map((deck) => (
-    <DeckListItem key={deck.id} deck={deck} />
+    <div>
+      <DeckListItem key={deck.id} deck={deck} />
+    </div>
   ));
   console.log(decks);
 
   return (
     <div>
       <NavLink to="/decks/new">
-        <button type="button" className="btn btn-info">
+        <button
+          type="button"
+          style={{ margin: "8px" }}
+          className="btn btn-secondary"
+        >
+          <Icon type="add" />
           Create Deck
         </button>
       </NavLink>
-      <section>{deckList}</section>
+      <div style={{ margin: "8px" }}>{deckList}</div>
     </div>
   );
 }

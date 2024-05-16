@@ -4,28 +4,25 @@ import DeleteDeckButton from "./DeleteDeckButton";
 
 function DeckListItem({ deck }) {
   return (
-    <article>
-      <div>
-        <div>
-          <h4>{deck.name}</h4>
-          {deck.cards.length} cards
-        </div>
-        <p>{deck.description}</p>
-        <div className="d-flex flex-row bd-highlight mb-1">
-          <NavLink to={`/decks/${deck.id}`}>
-            <button type="button" className="ml-2 btn btn-secondary">
-              View
-            </button>
-          </NavLink>
-          <NavLink to={`/decks/${deck.id}/study`}>
-            <button type="button" className="ml-2 btn btn-secondary">
-              Study
-            </button>
-          </NavLink>
-          <DeleteDeckButton deck={deck} />
-        </div>
+    <div class="card w-75">
+      <div class="card-body">
+        <h5 class="card-title">{deck.name}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{deck.cards.length} cards</h6>
+        <p class="card-text">{deck.description}</p>
+        <div className="d-flex justify-content-between"></div>
+        <NavLink to={`/decks/${deck.id}`}>
+          <button type="button" className="ml-2 btn btn-secondary">
+            View
+          </button>
+        </NavLink>
+        <NavLink to={`/decks/${deck.id}/study`}>
+          <button type="button" className="btn btn-primary">
+            Study
+          </button>
+        </NavLink>
+        <DeleteDeckButton deck={deck} />
       </div>
-    </article>
+    </div>
   );
 }
 

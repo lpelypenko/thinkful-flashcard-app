@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteDeck } from "../../utils/api";
+import Icon from "../common/Icon";
 
 function DeleteDeckButton({ deck }) {
   const navigate = useNavigate();
@@ -15,12 +16,8 @@ function DeleteDeckButton({ deck }) {
   };
 
   return (
-    <button
-      type="button"
-      className="ml-auto p-2 bd-highlight btn btn-outline-danger"
-      onClick={handleDelete}
-    >
-      Delete
+    <button type="button" className="btn btn-danger" onClick={handleDelete}>
+      <Icon type={"Delete"} />
     </button>
   );
 }
