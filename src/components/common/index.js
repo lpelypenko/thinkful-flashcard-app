@@ -10,6 +10,7 @@ import Study from "../study/Study";
 import CreateNewCard from "../card/CreateNewCard";
 import EditCard from "../card/EditCard";
 
+// WTF????
 function Layout() {
   return (
     <div>

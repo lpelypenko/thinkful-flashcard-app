@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { readDeck, updateCard, readCard } from "../../utils/api";
-import { NavLink, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import CardForm from "./CardForm";
+import Breadcrumb from "../common/Breadcrumb";
 
 function EditCard() {
   const navigate = useNavigate();
@@ -37,27 +38,14 @@ function EditCard() {
     }
   };
 
+  const breadcrumbItems = [
+    { link: "/", title: "Home", active: false },
+    { link: `/decks/${deckId}`, title: deck.name, active: false },
+    { link: "", title: `Edit Card ${cardId}`, active: true },
+  ];
   return (
     <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <NavLink to="/">
-              <span
-                className="oi oi-home mr-1"
-                style={{ color: "#0d6efd" }}
-              ></span>
-              Home
-            </NavLink>
-          </li>
-          <li className="breadcrumb-item">
-            <NavLink to={`/decks/${deckId}`}>{deck.name}</NavLink>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Edit Card {cardId}
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumb items={breadcrumbItems} />
       <h3>Edit Card</h3>
 
       <CardForm
