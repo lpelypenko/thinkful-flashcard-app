@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createDeck } from "../../utils/api";
+import Breadcrumb from "../common/Breadcrumb";
+
 function CreateNewDeck() {
   const initialFormState = {
     name: "",
@@ -23,22 +25,18 @@ function CreateNewDeck() {
     navigate("/");
   };
 
+  const breadcrumbItems = [
+    { link: "/", title: "Home", active: false },
+    { link: "", title: "Create Deck", active: true },
+  ];
+
   return (
     <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Create Deck
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumb items={breadcrumbItems} />
       <h2>Create Deck</h2>
       <form name="create" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name" style={{ width: "90%" }}>
+          <label htmlFor="name" style={{ width: "100%" }}>
             Name
             <input
               id="name"
@@ -52,7 +50,7 @@ function CreateNewDeck() {
           </label>
         </div>
         <div className="form-group">
-          <label htmlFor="description" style={{ width: "90%" }}>
+          <label htmlFor="description" style={{ width: "100%" }}>
             Description
             <textarea
               id="description"

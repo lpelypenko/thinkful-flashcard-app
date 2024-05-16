@@ -3,6 +3,7 @@ import { readDeck, createCard } from "../../utils/api";
 import { useState } from "react";
 import { NavLink, useParams, useNavigate } from "react-router-dom";
 import CardForm from "./CardForm";
+import Breadcrumb from "../common/Breadcrumb";
 
 export default function AddCard() {
   const navigate = useNavigate();
@@ -39,27 +40,14 @@ export default function AddCard() {
     setCardData({ ...initialAddCardState });
   };
 
+  const breadcrumbItems = [
+    { link: "/", title: "Home", active: false },
+    { link: `/decks/${deckId}`, title: deck.name, active: false },
+    { link: "", title: "Add Card", active: true },
+  ];
   return (
     <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb" style={{ lineHeight: "inherit" }}>
-          <li className="breadcrumb-item">
-            <NavLink to="/">
-              <span
-                className="oi oi-home mr-1"
-                style={{ color: "#0d6efd" }}
-              ></span>
-              Home
-            </NavLink>
-          </li>
-          <li className="breadcrumb-item">
-            <NavLink to="/">{deck.name}</NavLink>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Add Card
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumb items={breadcrumbItems} />
       <h3>{deck.name}: Add Card</h3>
 
       <CardForm

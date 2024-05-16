@@ -4,7 +4,7 @@ import Icon from "./Icon";
 
 function Breadcrumb({ items }) {
   return (
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" style={{ marginTop: "20px" }}>
       <ol class="breadcrumb">
         {items.map((item) =>
           item.active == true ? (

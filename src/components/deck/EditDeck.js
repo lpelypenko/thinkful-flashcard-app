@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { updateDeck, readDeck } from "../../utils/api";
+import Breadcrumb from "../common/Breadcrumb";
+
 function EditDeck() {
   const [deckData, setDeckData] = useState({});
   const { deckId } = useParams();
@@ -31,22 +33,15 @@ function EditDeck() {
     await updateDeck(deckData);
     navigate("/");
   };
+  const breadcrumbItems = [
+    { link: "/", title: "Home", active: false },
+    { link: `/decks/${deckId}`, title: deckData.name, active: false },
+    { link: "", title: "Edit Deck", active: true },
+  ];
 
   return (
     <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li className="breadcrumb-item">
-            <NavLink to={`/decks`}>{deckData.name}</NavLink>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Edit Deck
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumb items={breadcrumbItems} />
       <h2>Edit Deck</h2>
       <form name="create" onSubmit={handleSubmit}>
         <div className="form-group">

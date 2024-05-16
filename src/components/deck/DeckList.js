@@ -31,10 +31,10 @@ function DeckList() {
       <NavLink to="/decks/new">
         <button
           type="button"
-          style={{ margin: "8px" }}
+          style={{ margin: "20px 8px" }}
           className="btn btn-secondary"
         >
-          <Icon type="add" />
+          <Icon type="Add" />
           Create Deck
         </button>
       </NavLink>

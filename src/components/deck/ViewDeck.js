@@ -3,6 +3,8 @@ import { NavLink, useParams, useLocation } from "react-router-dom";
 import { readDeck, deleteCard } from "../../utils/api";
 import CardList from "../card/CardList";
 import DeleteDeckButton from "./DeleteDeckButton";
+import Breadcrumb from "../common/Breadcrumb";
+import Icon from "../common/Icon";
 
 function ViewDeck() {
   const [deck, setDeck] = useState({});
@@ -34,34 +36,30 @@ function ViewDeck() {
     }
   };
 
+  const breadcrumbItems = [
+    { link: "/", title: "Home", active: false },
+    { link: "", title: deck.name, active: true },
+  ];
+
   return (
     <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            {deck.name}
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumb items={breadcrumbItems} />
       <h4>{deck.name}</h4>
       <p>{deck.description}</p>
       <div className="d-flex flex-row bd-highlight mb-1">
         <NavLink to={`${pathname}/edit`}>
-          <button type="button" className="ml-2 btn btn-secondary">
-            Edit
+          <button type="button" className="btn btn-secondary">
+            <Icon type={"Edit"} /> Edit
           </button>
         </NavLink>
         <NavLink to={`${pathname}/study`}>
           <button type="button" className="ml-2 btn btn-secondary mr-2">
-            Study
+            <Icon type={"Study"} /> Study
           </button>
         </NavLink>
         <NavLink to={`${pathname}/cards/new`}>
           <button type="button" className="btn btn-info mr-2">
-            Add Cards
+            <Icon type={"Add"} /> Add Cards
           </button>
         </NavLink>
         <DeleteDeckButton deck={deck} />

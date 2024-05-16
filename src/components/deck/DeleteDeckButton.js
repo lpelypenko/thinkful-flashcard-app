@@ -16,7 +16,12 @@ function DeleteDeckButton({ deck }) {
   };
 
   return (
-    <button type="button" className="btn btn-danger" onClick={handleDelete}>
+    <button
+      type="button"
+      className="btn btn-danger"
+      onClick={handleDelete}
+      style={{ marginLeft: "auto" }}
+    >
       <Icon type={"Delete"} />
     </button>
   );
