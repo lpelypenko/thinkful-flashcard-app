@@ -1,29 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Icon from "../common/Icon";
+import Breadcrumb from "../common/Breadcrumb";
 
 const NotEnoughCards = ({ deckId, numberOfCards, deck }) => {
+  const breadcrumbItems = [
+    { link: "/", title: "Home", active: false },
+    { link: `/decks/${deckId}`, title: deck.name, active: false },
+    { link: "", title: "Study", active: true },
+  ];
   return (
-    <>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <NavLink to="/">
-              <span
-                className="oi oi-home mr-1"
-                style={{ color: "#0d6efd" }}
-              ></span>
-              Home
-            </NavLink>
-          </li>
-          <li className="breadcrumb-item">
-            <NavLink to="/">{deck.name}</NavLink>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Study
-          </li>
-        </ol>
-      </nav>
+    <div>
+      <Breadcrumb items={breadcrumbItems} />
       <h3>Study</h3>
       <h4>Not enough cards in the deck.</h4>
       <p>
@@ -31,9 +18,9 @@ const NotEnoughCards = ({ deckId, numberOfCards, deck }) => {
         this deck.
       </p>
       <NavLink to={`/decks/${deckId}/cards/new`} className="btn btn-primary">
-        <Icon type={"add"} /> Add Cards
+        Add Cards
       </NavLink>
-    </>
+    </div>
   );
 };
 
